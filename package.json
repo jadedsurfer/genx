@@ -1,0 +1,46 @@
+{
+  "name": "grunt-genx",
+  "description": "Generates a static site using any templating engine",
+  "version": "0.1.0",
+  "homepage": "https://github.com/tbashor/genx",
+  "author": {
+    "name": "Todd Bashor",
+    "email": "jadedsurfer@gmail.com",
+    "url": "thestartersacademy.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tbashor/genx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tbashor/genx/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/tbashor/genx/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.1.0",
+    "grunt-contrib-clean": "0.4.0a",
+    "grunt-contrib-nodeunit": "~0.1.1",
+    "grunt": "~0.4.0a",
+    "dustjs-linkedin": "~1.1.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "consolidate-build": "~1.0.0",
+    "grunt": "~0.4.0a",
+    "grunt-contrib-clean": "~0.3.1"
+  }
+}
