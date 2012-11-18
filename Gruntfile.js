@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     genx: {
       blog:{
 				src: ['test/content/blog/posts/post2.dust'],
-				dest: 'test/public/blog/post2.html',
+				dest: 'test/public/blog/',
 				options: {
 					template: 'test/layouts/post.dust',
 					context: {

@@ -32,16 +32,17 @@ exports['genx'] = {
     test.expect(1);
     // tests here
     var src = 'test/content/blog/posts/post2.dust',
-				dest = 'test/public/blog/post2.html',
+				dest = 'test/public/blog/',
+				target = 'test/public/blog/post2.html',
 				expected = grunt.file.read('test/expected/post2.html');
 				function done(err){
 					if (err){
 						grunt.warn(err);
 						test.done(err);
 					}
-					test.equal(grunt.file.read(dest), expected, 'should return the rendered file');
+					test.equal(grunt.file.read(target), expected, 'should return the rendered file');
 					test.done();
 				}
-		genx.generateFile(src, dest, done);
+		genx.generateFile(src, dest, {}, done);
   }
 };

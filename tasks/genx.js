@@ -20,15 +20,15 @@ module.exports = function(grunt) {
 		//console.log(this.async);
 		var done = this.async(),
 				dest = this.file.dest,
+				options = this.options({}),//can merge in a default object
 				filepaths = [];
 				//context = this;
-				
 		grunt.file.expandFiles(this.file.src).forEach(function(filepath) {
 			filepaths.push(filepath);
 		});
 		
 		grunt.util.async.forEachSeries(filepaths, function processSource(filepath, next) {
-				genx.generateFile(filepath, dest, function(err){
+				genx.generateFile(filepath, dest, options, function(err){
 					if (err) {
 						grunt.warn(err);
 						next(err);
