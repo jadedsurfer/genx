@@ -1,0 +1,15 @@
+{>"test/layouts/main"/}
+
+{<title}{title}{/title}
+
+{<html_body}
+
+	{>"test/partials/site_nav"/}
+
+	<div class="post">
+
+		{contents|s}
+
+	</div>
+
+{/html_body}

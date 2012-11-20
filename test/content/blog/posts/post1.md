@@ -1,46 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
+A First Level Header
+====================
 
-		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-		Remove this if you use the .htaccess -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+A Second Level Header
+---------------------
 
-		<title>index</title>
-		<meta name="description" content="" />
-		<meta name="author" content="Todd Bashor" />
+Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.
 
-		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+The quick brown fox jumped over the lazy
+dog's back.
 
-		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-	</head>
+### Header 3
 
-	<body>
-		<div>
-			<header>
-				<h1>index</h1>
-			</header>
-			<nav>
-				<p>
-					<a href="/">Home</a>
-				</p>
-				<p>
-					<a href="/contact">Contact</a>
-				</p>
-			</nav>
-
-			<div>
-
-			</div>
-
-			<footer>
-				<p>
-					&copy; Copyright  by Todd Bashor
-				</p>
-			</footer>
-		</div>
-	</body>
-</html>
+> This is a blockquote.
+> 
+> This is the second paragraph in the blockquote.
+>
+> ## This is an H2 in a blockquote

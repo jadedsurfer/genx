@@ -33,7 +33,8 @@
     "grunt-contrib-clean": "0.4.0a",
     "grunt-contrib-nodeunit": "~0.1.1",
     "grunt": "~0.4.0a",
-    "dustjs-linkedin": "~1.1.1"
+    "dustjs-linkedin": "~1.1.1",
+    "uglify-js": "~1.3.4"
   },
   "keywords": [
     "gruntplugin"

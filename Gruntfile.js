@@ -22,22 +22,23 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc',
       },
     },
-
+    
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['test/public/blog/*'],
+      tests: ['test/actual/public/blog/*'],
     },
 
     // Configuration to be run (and then tested).
     genx: {
       blog:{
-				src: ['test/content/blog/posts/post2.dust'],
-				dest: 'test/public/blog/',
+				src: ['test/content/blog/posts/*.dust', 'test/content/blog/posts/*.jade', 'test/content/blog/posts/*.md'],
+				dest: 'test/actual/public/blog/',
 				options: {
-					template: 'test/layouts/post.dust',
-					context: {
-						title: "Site Title"
-					}
+					layout: 'test/partials/post.dust',
+					title: "Site Title",
+					author: "Your Name",
+					tags: "awesomeness",
+					name: "Hello World"
 				}
 			}
     },
@@ -59,8 +60,8 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'genx:blog', 'nodeunit']);
-  grunt.registerTask('run', ['genx:blog']);
+  grunt.registerTask('test', ['clean', 'nodeunit']);
+  grunt.registerTask('run', ['clean','genx:blog']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
