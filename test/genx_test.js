@@ -29,46 +29,17 @@ exports['genx'] = {
 		// setup here
 		done();
 	},
-	'generateFile' : {
-		jade: function(test) {
-			test.expect(1);
-			// tests here
-			var filename = 'template', 
-					extension = 'jade', 
-					srcDir = 'test/content/blog/posts', 
-					destDir = 'test/actual/public/blog', 
-					src = path.join(srcDir, filename + '.' + extension), 
-					target = path.join(destDir, filename + '.html'),
-					//The rendering engine may minify the otuput so make sure the expected file
-					//really matches what will come out the templating engine
-					//TODO: Figure out how to prevent dust from minifying the output
-					expected = grunt.file.read('test/expected/' + filename + '.html'), 
-					options = {
-						layout: 'test/partials/post.dust',
-						title: "Site Title",
-						author: "Your Name",
-						tags: "awesomeness",
-						name: "Hello World"
-					};
-	
-			function done(err) {
-				if (err) {
-					grunt.warn(err);
-					test.done(err);
-				}
-				test.equal(grunt.file.read(target), expected, 'should return the rendered file');
-				test.done();
-			}
-	
-			genx.generateFile(src, destDir, options, done);
-		},
-		markdown: function(test) {
+	'TEST generateFile': {
+		'markdown works': function(test) {
+			// Unit tests the generateFile function.
+			// Simulates the result of the grunt task.
+			// Use markdown as the templating engine.
 			test.expect(1);
 			// tests here
 			var filename = 'post1', 
 					extension = 'md', 
 					srcDir = 'test/content/blog/posts', 
-					destDir = 'test/actual/public/blog', 
+					destDir = 'test/actual/test-result', 
 					src = path.join(srcDir, filename + '.' + extension), 
 					target = path.join(destDir, filename + '.html'),
 					//The rendering engine may minify the otuput so make sure the expected file
@@ -92,68 +63,59 @@ exports['genx'] = {
 			}
 	
 			genx.generateFile(src, destDir, options, done);
-		},
-		"dust-with-options": function(test) {
+		}
+	},
+	'TEST grunt task' : {
+		'jade works': function(test) {
+			// Tests the result of the grunt task.
+			// The jade file should have a token replaced,
+			// be rendered into a layout,
+			// and moved into the target directory.
+			// Local file adds context.
 			test.expect(1);
 			// tests here
-			var filename = 'post2', 
-					extension = 'dust', 
-					srcDir = 'test/content/blog/posts', 
-					destDir = 'test/actual/public/blog', 
-					src = path.join(srcDir, filename + '.' + extension), 
-					target = path.join(destDir, filename + '.html'),
+			var actual = grunt.file.read('test/actual/public/blog/template.html'),
 					//The rendering engine may minify the otuput so make sure the expected file
 					//really matches what will come out the templating engine
 					//TODO: Figure out how to prevent dust from minifying the output
-					expected = grunt.file.read('test/expected/' + filename + '.html'), 
-					options = {
-						layout: 'test/partials/post.dust',
-						title: "Site Title",
-						author: "Your Name",
-						tags: "awesomeness"
-					};
+					expected = grunt.file.read('test/expected/template.html');
 	
-			function done(err) {
-				if (err) {
-					grunt.warn(err);
-					test.done(err);
-				}
-				test.equal(grunt.file.read(target), expected, 'should return the rendered file');
-				test.done();
-			}
-	
-			genx.generateFile(src, destDir, options, done);
+			test.equal(actual, expected, 'should return the rendered file');
+			test.done();
 		},
-		"no-options-no-local": function(test) {
+		"dust works": function(test) {
+			// Tests the result of the grunt task.
+			// The dust file should have a token replaced,
+			// be rendered into a layout,
+			// and moved into the target directory.
+			// Local file overrides some context.
 			test.expect(1);
 			// tests here
-			var filename = 'post3', 
-					extension = 'dust', 
-					srcDir = 'test/content/blog/posts', 
-					destDir = 'test/actual/public/blog', 
-					src = path.join(srcDir, filename + '.' + extension), 
-					target = path.join(destDir, filename + '.html'),
+			var actual = grunt.file.read('test/actual/public/blog/post2.html'),
 					//The rendering engine may minify the otuput so make sure the expected file
 					//really matches what will come out the templating engine
 					//TODO: Figure out how to prevent dust from minifying the output
-					expected = grunt.file.read('test/expected/' + filename + '.html'), 
-					options = {
-						layout: 'test/partials/post.dust',
-						title: "Site Title",
-						author: "Your Name",
-						tags: "awesomeness"
-					};
+					expected = grunt.file.read('test/expected/post2.html');
 	
-			function done(err) {
-				if (err) {
-					grunt.warn(err);
-					test.done(err);
-				}
-				test.equal(grunt.file.read(target), expected, 'should return the rendered file');
-				test.done();
-			}
+			test.equal(actual, expected, 'should return the rendered file');
+			test.done();
+		},
+		"dust with no related json works": function(test) {
+			// Tests the result of the grunt task.
+			// This content file doesn't have a corresponding local json file.
+			// The dust file should have a token replaced,
+			// be rendered into a layout,
+			// and moved into the target directory.
+			test.expect(1);
+			// tests here
+			var actual = grunt.file.read('test/actual/public/blog/post3.html'),
+					//The rendering engine may minify the otuput so make sure the expected file
+					//really matches what will come out the templating engine
+					//TODO: Figure out how to prevent dust from minifying the output
+					expected = grunt.file.read('test/expected/post3.html');
 	
-			genx.generateFile(src, destDir, options, done);
+			test.equal(actual, expected, 'should return the rendered file');
+			test.done();
 		}
 	}
 };

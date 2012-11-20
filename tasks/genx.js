@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 					next();
 				});
 		}, function(){
-					console.log('all done'); 
+					grunt.log.ok('ALL DONE'); 
 					done();
 				} 
 		);
