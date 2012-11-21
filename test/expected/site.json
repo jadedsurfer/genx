@@ -1,0 +1,1 @@
+{"title":"Site Title","author":"Your Name","tags":"cool, stuff","content":{"blog":{"authors":{"template":"templates/author"},"title":"Blog Title","posts":{"post2.json":{"title":"post 2"},"template":"templates/post","template.json":{"name":"Hello World"}}}}}
