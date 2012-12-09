@@ -37,21 +37,22 @@ exports['genx'] = {
 			test.expect(1);
 			// tests here
 			var filename = 'post1', 
-					extension = 'md', 
-					srcDir = 'test/content/blog/posts', 
-					destDir = 'test/actual/test-result', 
-					src = path.join(srcDir, filename + '.' + extension), 
-					target = path.join(destDir, filename + '.html'),
-					//The rendering engine may minify the otuput so make sure the expected file
-					//really matches what will come out the templating engine
-					//TODO: Figure out how to prevent dust from minifying the output
-					expected = grunt.file.read('test/expected/' + filename + '.html'), 
-					options = {
-						layout: 'test/partials/post.dust',
-						title: "Site Title",
-						author: "Your Name",
-						tags: "awesomeness"
-					};
+				extension = 'md', 
+				srcDir = 'test/content/blog/posts', 
+				destDir = 'test/actual/test-result', 
+				src = path.join(srcDir, filename + '.' + extension), 
+				target = path.join(destDir, filename + '.html'),
+				//The rendering engine may minify the otuput so make sure the expected file
+				//really matches what will come out the templating engine
+				//TODO: Figure out how to prevent dust from minifying the output
+				expected = grunt.file.read('test/expected/' + filename + '.html'), 
+				options = {
+					dest: destDir,
+					layout: 'test/partials/post.dust',
+					title: "Site Title",
+					author: "Your Name",
+					tags: "awesomeness"
+				};
 	
 			function done(err) {
 				if (err) {
@@ -62,7 +63,7 @@ exports['genx'] = {
 				test.done();
 			}
 	
-			genx.generateFile(src, destDir, options, done);
+			genx.generateFile(src, options, done);
 		}
 	},
 	'TEST grunt task' : {

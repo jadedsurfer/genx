@@ -25,7 +25,7 @@ module.exports = function(grunt) {
     
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['test/actual/public/blog/*', 'test/actual/test-results/*', 'test/actual/public/blog/site.json'],
+      tests: ['test/actual/public/blog/*', 'test/actual/test-result/*', 'test/actual/public/blog/site.json'],
     },
 
     // Configuration to be run (and then tested).
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   grunt.registerTask('test-genx', ['clean', 'genx:test', 'nodeunit']);
-  grunt.registerTask('test-json', ['clean', 'json:test']);
+  grunt.registerTask('test-json', ['clean', 'json']);
   grunt.registerTask('run', ['clean','genx:test']);
 
   // By default, lint and run all tests.
