@@ -10,7 +10,8 @@ module.exports = function(grunt) {
 	
 	"use strict";
 	
-	var genx = require('../lib/genx'),
+	var htmlGenerator = require('../lib/html'),
+			contextGenerator = require('../lib/context'),
 			_ = grunt.util._;
 
 	
@@ -20,11 +21,11 @@ module.exports = function(grunt) {
   // ==========================================================================
 
   grunt.registerMultiTask('genx', 'Generate a static site using any templating engine', function() {
-		genx.generateHtmlFiles(this.file.src, this.options({dest: this.file.dest}), this.async());
+		htmlGenerator.generateHtmlFiles(this.file.src, this.options({dest: this.file.dest}), this.async());
 	});
 	
 	grunt.registerMultiTask('json', 'Combine json files to form the a context object', function() {
-		genx.generateJsonFiles(this.file.src, this.options({dest: this.file.dest}), this.async());
+		contextGenerator.generateSiteContext(this.file.src, this.options({dest: this.file.dest}), this.async());
 	});
 
 };

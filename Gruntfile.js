@@ -75,6 +75,6 @@ module.exports = function(grunt) {
   grunt.registerTask('run', ['clean','genx:test']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test-json']);
+  grunt.registerTask('default', ['jshint', 'test-genx']);
 
 };
