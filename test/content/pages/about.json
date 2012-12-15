@@ -1,1 +1,5 @@
-{}
+{
+	"title":"about me",
+	"template":"templates/about",
+	"nav":["go home"]
+}

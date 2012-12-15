@@ -1,3 +1,4 @@
 {
-	"template": "templates/author"
+	"template": "templates/author",
+	"title":"default title for authors page"
 }
