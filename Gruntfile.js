@@ -16,6 +16,8 @@ module.exports = function(grunt) {
 			all: [
 				'Gruntfile.js',
 				'tasks/*.js',
+				'lib/gen.js',
+				'lib/manifest.js',
 				'<%= nodeunit.tests %>',
 			],
 			options: {
@@ -29,14 +31,19 @@ module.exports = function(grunt) {
 		},
 
 		// Configuration to be run (and then tested).
-		json: {
+		manifest:{
 			test:{
-				src: ['test/content/blog/**/*.json'],
-				dest: 'test/actual/public/blog/site.json',
+				root: 'test/content',
+				dest: 'test/actual/site.json',
 				options: {
-					title: "Site Title",
-					author: "Your Name",
-					tags: "cool, stuff"
+					context: {
+						title: "Site Title",
+						author: "Your Name",
+						tags: "site, cool, stuff",
+						layout: 'test/partials/post.dust'
+					},
+					duringWalk: ['lib/addcontents.js'],
+					postWalk: ['lib/mergecontexts.js']
 				}
 			}
 		},
@@ -45,50 +52,11 @@ module.exports = function(grunt) {
 				src: ['test/content/blog/posts/*.dust', 'test/content/blog/posts/*.jade', 'test/content/blog/posts/*.md'],
 				dest: 'test/actual/public/blog/',
 				options: {
-					context: 'test/actual/site.json'
+					context: 'test/actual/site.json',
+					useNearestContext: true
 				}
 			}
 		},
-		"genx-file": {
-			test:{
-				src: 'test/content/blog/posts/post1.dust',
-				dest: 'test/actual/public/blog/',
-				options: {
-					"title": "default post name",
-					"author": "Your Name",
-					"tags": "cool, stuff",
-					"layout": "test/partials/post.dust",
-					"blog md": "something at blog level-inside",
-					"metadata": "pages context",
-					"nav": [
-						"page 1",
-						"page 2",
-						"page 3"
-					],
-					"md1": "resources context",
-					"template": "templates/post",
-					"tile": "Hello World",
-					"other": "something else",
-					"name": "post 4 name"
-				}
-			}
-		},
-		Xsite: {
-			test:{
-				src: ['test/content'],
-				dest: 'test/actual/site.json',
-				options: {
-					title: "Site Title",
-					author: "Your Name",
-					tags: "cool, stuff",
-					layout: 'test/partials/post.dust'
-				}
-			}
-		},
-		manifest:{
-
-		},
-
 		// Unit tests.
 		nodeunit: {
 			tests: ['test/*_test.js'],
@@ -108,12 +76,9 @@ module.exports = function(grunt) {
 	// plugin's task(s), then test the result.
 
 	grunt.registerTask('test-genx', ['clean', 'genx:test']);
-	grunt.registerTask('test-genx-file', ['clean', 'genx-file:test']);
-	grunt.registerTask('test-json', ['clean', 'json']);
-	grunt.registerTask('test-site', ['clean', 'site']);
-	grunt.registerTask('run', ['clean','genx:test']);
+	grunt.registerTask('test-manifest', ['clean', 'manifest:test']);
 
 	// By default, lint and run all tests.
-	grunt.registerTask('default', ['jshint', 'test-genx-file']);
+	grunt.registerTask('default', ['jshint', 'clean', 'manifest:test', 'genx:test']);
 
 };

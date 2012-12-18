@@ -1,5 +1,6 @@
 {
-	"tile" : "Hello World",
+	"title" : "Hello World",
 	"other":"something else",
-	"name": "post 4 name"
+	"name": "post 4 name",
+	"file":"post4"
 }

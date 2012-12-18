@@ -1,4 +1,5 @@
 {
 	"template": "templates/post",
-	"title" : "default post name"
+	"title" : "default post name",
+	"file":"posts"
 }

@@ -1,4 +1,5 @@
 {
 	"title" : "post 2",
-	"template": "templates/postspecial"
+	"template": "templates/postspecial",
+	"file":"post2"
 }
