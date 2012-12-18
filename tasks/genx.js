@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerMultiTask('genx', 'Generate a static site using any templating engine', function() {
-		genx.generateHtmlFiles(this, this.async());
+		genx.generate(this, this.async());
 	});
 	
 };

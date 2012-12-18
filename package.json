@@ -5,28 +5,25 @@
   "homepage": "https://github.com/tbashor/genx",
   "author": {
     "name": "Todd Bashor",
-    "email": "jadedsurfer@gmail.com",
+    "email": "todd@thestartersacademy.com",
     "url": "thestartersacademy.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/tbashor/genx.git"
+    "url": "git://github.com/thestartersacademy/genx.git"
   },
   "bugs": {
-    "url": "https://github.com/tbashor/genx/issues"
+    "url": "https://github.com/thestartersacademy/genx/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/tbashor/genx/blob/master/LICENSE-MIT"
+      "url": "https://github.com/thestartersacademy/genx/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
   "engines": {
     "node": ">= 0.8.0"
-  },
-  "scripts": {
-    "test": "grunt test"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.0",
@@ -34,14 +31,20 @@
     "grunt": "~0.4.0a",
     "dustjs-linkedin": "~1.1.1",
     "jade": "0.27.7",
-    "markdown": "0.4.0"
+    "markdown": "0.4.0",
+    "node.extend": "~1.0.0"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "grunt",
+    "static site",
+    "generator",
+    "manifest"
   ],
   "dependencies": {
     "consolidate-build": "~1.0.0",
     "grunt": "~0.4.0a",
     "grunt-contrib-clean": "0.4.0a",
+    "node.extend": "~1.0.0"
   }
 }

@@ -2,6 +2,8 @@
 
 > Generates a static site using any templating engine
 
+I'll update this documentation soon. 
+
 ## Getting Started
 _If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide._
 
